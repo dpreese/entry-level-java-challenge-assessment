@@ -3,6 +3,9 @@ package com.challenge.api.model;
 import java.time.Instant;
 import java.util.UUID;
 
+/*
+EmployeeModel class was made to implement the Employee interface so the application can actually use it (create, store, and return) during runtime
+*/
 public class EmployeeModel implements Employee {
     private UUID uuid;
     private String firstName;
@@ -17,7 +20,7 @@ public class EmployeeModel implements Employee {
     public EmployeeModel() {}
 
     public EmployeeModel(UUID uuid, String firstName, String lastName) {
-        // Basic constructor with hardcoded values for simplicity assuming all fields are required.
+        // Basic constructor with hardcoded values for simplicity assuming all fields are required except for the contract termination date (its not very clear)
         this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;

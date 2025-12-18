@@ -29,6 +29,7 @@ public class EmployeeService {
         Some Pseudo Code for if this was a real app with a DB:
          - Inject a DAO
             - private final EmployeeRepoDAO repoDAO;
+            - check authToken to see if valid
          - return repoDAO.findAll();
         */
         return employees;
@@ -39,6 +40,7 @@ public class EmployeeService {
         Some Pseudo Code for if this was a real app with a DB:
          - Inject a DAO
             - private final EmployeeRepoDAO repoDAO;
+            - check authToken to see if valid
          - return repoDAO.findById(uuid).orElseThrow(() -> new NotFoundException("Employee not found"));
         */
         for (Employee employee : employees) {
@@ -53,7 +55,7 @@ public class EmployeeService {
         EmployeeModel request = objectMapper.convertValue(requestBody, EmployeeModel.class);
         request.setUuid(UUID.randomUUID()); // Set employeeUuid to random UUID value
         if (request.getFirstName() == null || request.getLastName() == null) {
-            throw new IllegalArgumentException("First name and last name must not be null");
+            throw new IllegalArgumentException("Required values must not be null");
         }
         employees.add(request);
         return request;
