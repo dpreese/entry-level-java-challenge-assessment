@@ -1,7 +1,6 @@
 package com.challenge.api.model;
 import java.time.Instant;
 import java.util.UUID;
-import com.challenge.api.model.Employee;
 
 public class EmployeeModel implements Employee {
     private UUID uuid;
@@ -13,6 +12,8 @@ public class EmployeeModel implements Employee {
     private String email;
     private Instant contractHireDate;
     private Instant contractTerminationDate;
+
+    public EmployeeModel() {}
 
     public EmployeeModel(UUID uuid, String firstName, String lastName) {
         // Basic constructor with hardcoded values for simplicity assuming all fields are required.

@@ -3,11 +3,16 @@ import com.challenge.api.model.Employee;
 import com.challenge.api.model.EmployeeModel;
 import java.util.List;
 import java.util.UUID;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmployeeService {
     private final List<Employee> employees;
+    private final ObjectMapper objectMapper = new ObjectMapper(); // Simple object mapper usage. In a real app, would validate input more thoroughly or initialize it in a constructor.
+
+
 
     public EmployeeService() {
         this.employees = new java.util.ArrayList<>();
@@ -45,11 +50,8 @@ public class EmployeeService {
     }
     // Create a new employee
     public Employee createEmployee(Object requestBody) {
-        ObjectMapper objectMapper = new ObjectMapper(); // Simple object mapper usage. In a real app, would validate input more thoroughly or initialize it in a constructor.
         EmployeeModel request = objectMapper.convertValue(requestBody, EmployeeModel.class);
-        if (request.getUuid() == null) { // Potential issue with UUID collisions in real app this is just for assignment purposes. Would overwrite it with new UUID
-            request.setUuid(UUID.randomUUID());
-        }
+        request.setUuid(UUID.randomUUID());
         if (request.getFirstName() == null) {
             request.setFirstName("Test First Name");
         }
