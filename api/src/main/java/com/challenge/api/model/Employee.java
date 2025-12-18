@@ -57,4 +57,3 @@ public interface Employee {
 
     void setContractTerminationDate(Instant date);
 }
-

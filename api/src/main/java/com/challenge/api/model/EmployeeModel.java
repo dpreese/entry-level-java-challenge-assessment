@@ -1,4 +1,5 @@
 package com.challenge.api.model;
+
 import java.time.Instant;
 import java.util.UUID;
 
@@ -68,12 +69,12 @@ public class EmployeeModel implements Employee {
         // fullName is derived from firstName and lastName, so we don't store it directly.
         // This method is not used in the current implementation.
     }
-    
 
     @Override
     public Integer getSalary() {
         return salary;
     }
+
     @Override
     public void setSalary(Integer salary) {
         this.salary = salary;
